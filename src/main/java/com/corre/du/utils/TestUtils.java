@@ -3,6 +3,8 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import io.restassured.path.json.JsonPath;
 
+import static org.hamcrest.core.IsEqual.equalTo;
+
 public class TestUtils {
 
     private static Logger log = LogManager.getLogger(TestUtils.class.getName());

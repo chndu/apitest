@@ -25,6 +25,6 @@ public class Assertions {
     }
 
     public  static void verifyStatusMessage(Response response,int status){
-        Assert.assertEquals(TestUtils.getStatusCode(response),status);
+        Assert.assertEquals(TestUtils.getStatusMessage(response),status);
     }
 }

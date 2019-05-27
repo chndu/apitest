@@ -17,6 +17,7 @@ import static com.corre.du.base.Assertions.verifyStatusCode;
 public class Base {
 
     private static Logger log = LogManager.getLogger(Base.class.getName());
+    public String sessionId;
 
     public static String doLogin(){
         Response response;
@@ -38,16 +39,5 @@ public class Base {
     }
 
 
-    public static void logout(){
-        Response response;
-        log.info("stop testcase: logout");
 
-        String endpointURI = URI.getEndPoint("/api/user/logout");
-
-        response = RESTCalls.GETrequest(endpointURI);
-
-        log.info(response.getBody().asString());
-
-        verifyStatusCode(response,200);
-    }
 }

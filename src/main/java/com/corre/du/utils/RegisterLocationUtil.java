@@ -3,6 +3,8 @@ package com.corre.du.utils;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.corre.du.utils.RandomUtil.random;
+
 public class RegisterLocationUtil {
 
     /*
@@ -545,7 +547,7 @@ public class RegisterLocationUtil {
         registerLocation.put("铁西区", 210303);
         registerLocation.put("立山区", 210304);
         registerLocation.put("千山区", 210311);
-        registerLocation.put("台安县", 210321);
+        //registerLocation.put("台安县", 210321);
         registerLocation.put("岫岩满族自治县", 210323);
         registerLocation.put("海城市", 210381);
         registerLocation.put("抚顺市", 210400);
@@ -1458,7 +1460,7 @@ public class RegisterLocationUtil {
         registerLocation.put("峡江县", 360823);
         registerLocation.put("新干县", 360824);
         registerLocation.put("永丰县", 360825);
-        registerLocation.put("泰和县", 360826);
+        //registerLocation.put("泰和县", 360826);
         registerLocation.put("遂川县", 360827);
         registerLocation.put("万安县", 360828);
         registerLocation.put("安福县", 360829);

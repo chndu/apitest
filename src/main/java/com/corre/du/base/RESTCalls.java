@@ -11,10 +11,11 @@ import io.restassured.specification.RequestSpecification;
 public class RESTCalls {
     private static Logger log = LogManager.getLogger(RESTCalls.class.getName());
 
-    public static Response GETrequest(String URI){
+    public static Response GETrequest(String URI,String sessionId){
         log.info("Inside GETRequest call");
-        RequestSpecification requestSpecification = RestAssured.given().proxy("127.0.0.1",8888);
+        RequestSpecification requestSpecification = RestAssured.given();
         requestSpecification.contentType(ContentType.JSON);
+        requestSpecification.header("Cookie","access_token=" + sessionId + "");
         Response response = requestSpecification.get(URI);
         log.debug(requestSpecification.log().all());
         return response;
@@ -24,10 +25,8 @@ public class RESTCalls {
     public static Response POSTrequest(String URI,String strJSON){
         log.info("Inside POSTRequest call");
         RequestSpecification requestSpecification = RestAssured.given()
-                .proxy("127.0.0.1",8888)
                 .body(strJSON);
         requestSpecification.contentType(ContentType.JSON);
-
         Response response = requestSpecification.post(URI);
         log.debug(requestSpecification.log().all());
         return  response;
@@ -37,7 +36,6 @@ public class RESTCalls {
     public static Response POSTrequest(String URI,String strJSON,String sessionId){
         log.info("Inside POSTRequest call");
         RequestSpecification requestSpecification = RestAssured.given()
-                .proxy("127.0.0.1",8888)
                 .body(strJSON);
         requestSpecification.contentType(ContentType.JSON);
         requestSpecification.header("Cookie","access_token=" + sessionId + "");

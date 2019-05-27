@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/">
+<suite name="API APPLICATION TEST SUITE">
+
+
+    <test name="API Test Case2">
+        <classes>
+            <class name="queryCompanyDetailTest"></class>
+        </classes>
+    </test>
+
+</suite>

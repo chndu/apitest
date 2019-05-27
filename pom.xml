@@ -8,6 +8,9 @@
     <artifactId>apitest</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -60,49 +63,75 @@
         </dependency>
 
         <dependency>
+            <groupId>net.sourceforge.jexcelapi</groupId>
+            <artifactId>jxl</artifactId>
+            <version>2.6.12</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>2.10.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>2.10.0</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.20</version>
-                <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
-                    </properties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>7</source>
-                    <target>7</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <suiteXmlFiles>
+                <file>src\testng.xml</file>
+            </suiteXmlFiles>
+
+            <!--生成allure-result的目录-->
+            <systemProperties>
+                <property>
+                    <name>allure.result.directory</name>
+                    <value>./target/allure-results</value>
+                </property>
+            </systemProperties>
+        </configuration>
+        <!--allure需要的aspectjweave插件-->
+        <dependencies>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>1.9.3.RC1</version>
+            </dependency>
+        </dependencies>
+    </plugin>
+
+
+
+    </plugins>
+        </build>
+
+        <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+          <plugin>
+            <groupId>ru.yandex.qatools.allure</groupId>
+             <artifactId>allure-maven-plugin</artifactId>
+             <version>2.6</version>
+        <configuration>
+            <resultsDirectory>./target/allure-results/</resultsDirectory>
+        </configuration>
+    </plugin>
+</plugins>
+</reporting>
 
 
 

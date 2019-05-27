@@ -15,6 +15,8 @@ public class PayloadConvertor {
     public static String generatePayloadString(String fileName){
         log.info("Inside payload fucntion");
         String filePath = System.getProperty("user.dir")+"\\data\\"+fileName;
+        String file1 = System.getProperty("user.dir");
+        System.out.println(file1);
         try {
             return new String(Files.readAllBytes(Paths.get(filePath)));
         }catch (Exception e){
